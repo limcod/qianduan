@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    手机号码：  <input type="number"> <button>发送</button>
+    <script>
+        var button = document.querySelector('button');
+        var wenzi = null;
+        button.addEventListener('click',function(){
+            button.disabled = true;
+
+            var x = 5;
+            button.innerHTML = '当前剩余' + x + '秒可点击';
+            wenzi = setInterval(function(){
+                if(x == 1){
+                    button.innerHTML = '发送';
+                    button.disabled = false;
+                    clearInterval(wenzi);
+                }else{
+                    x--;
+                    button.innerHTML = '当前剩余' + x + '秒可点击';
+                    
+                }
+            },1000)
+        });
+        
+    </script>
+</body>
+</html>

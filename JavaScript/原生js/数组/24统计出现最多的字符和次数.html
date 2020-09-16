@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        /*  
+        //  有一个对象
+        var o = {
+            age : 18
+        }
+        if (o['age']) {
+            console.log('里面有该属性');
+            
+        }else{
+            console.log('没有该属性');
+            
+        }  
+        */
+
+        //判断一个字符串  'abcoefoxyozzopp'  中出现次数最多的字符，并统计其次数
+        var str = 'abcoefoxyozzopp';
+        var o = {};
+        for(var i = 0;i < str.length;i++){
+            var chars = str.charAt(i);  //  chars 是  字符串的每一个字符
+            if (o[chars]) { //o[chars] 得到的是属性值
+                o[chars]++;
+            }else{
+                o[chars] = 1;
+            }
+        }
+        console.log(o);
+        // 2.遍历对象
+        var max = 0;
+        var maxName = '';
+        for(var k in o){
+            //k 得到是属性名
+            // o[k]得到的是属性值
+            if(o[k] > max){
+                max = o[k];
+                maxName = k;
+            }
+        }
+        console.log('最多的字符是' + maxName + '----' + max);
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .yanse{
+            border-color: pink  ;    
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <input type="text" value="邮箱/ID/手机号" class="first">
+        <input type="text" value="密码" class="pwd">
+    </div>
+    
+    <script>
+        var first = document.querySelector('.first');
+        var pwd = document.querySelector('.pwd');
+        first.onfocus = function(){
+            this.value = '';
+            this.className = 'first yanse';
+        }
+        first.onblur = function(){
+            if(this.value.length === 0){
+                this.value = '邮箱/ID/手机号';
+                this.className = 'first';
+            }
+        }
+        pwd.onfocus = function(){
+            this.type = 'password';
+            if(this.value === '密码'){
+                this.value = '';
+            }
+        }
+        pwd.onblur = function(){
+            if(this.value.length === 0){
+                this.type = 'text';
+                this.value = '密码';
+            }
+        }
+
+    </script>
+</body>
+</html>
