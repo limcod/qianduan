@@ -1,4 +1,5 @@
 const fs = require('fs');
+// 改造现有异步函数api  让其返回promise对象  从而支持异步函数语法
 const promisify = require('util').promisify;
 const readFile = promisify(fs.readFile);
 
