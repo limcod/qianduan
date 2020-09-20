@@ -1,6 +1,6 @@
 const fs = require('fs');
 const promisify = require('util').promisify;
-const readFile = promisify(fs.readFile());
+const readFile = promisify(fs.readFile);
 
 async function run () {
     let r1 = await readFile('./1.txt','utf8');
