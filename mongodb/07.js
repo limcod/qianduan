@@ -17,9 +17,56 @@ const postSchema = new mongoose.Schema({
         maxlength: [5,'文章长度最大不能超过5'],
         // 去除字符串两边的空格
         trim:true
+    },
+    age: {
+        type:Number,
+        // 数字的最小范围
+        min : 18,
+        // 数字的最大范围
+        max : 100
+    },
+    publishDate: {
+        type : Date,
+        // 默认值
+        default: Date.now
+    },
+    category: {
+        type: String,
+        // 枚举 列举出当前字段可以拥有的值
+        // enum:['html','css','javascipt','node.js']
+        enum:{
+            values:['html','css','javascipt','node.js'],
+            message: '分类名称要在一定的范围内才可以'
+        }
+    },
+    author: {
+        type:String,
+        validate: {
+            validator: (v) => {
+                // 返回布尔值
+                // true 验证成功
+                // false 验证失败
+                // v 要验证的值
+                return v && v.length > 4
+            },
+            // 自定义错误信息
+            message: '传入的值不符合验证规则' 
+        }
     }
+
 })
 
 const Post = mongoose.model('Post',postSchema);
 
-Post.create({title:'     aa       '}).then(result => console.log(result))
+Post.create({title:'aa',title :10,category: 'java', author: 'db'})
+    .then(result => console.log(result))
+    .catch(error => {
+        // 获取错误信息对象
+        const err = error.errors;
+        // 循环错误信息对象
+        for(var attr in err){
+            // 讲错误信息打印到控制台中
+            console.log(err[attr]['message']);
+            
+        }
+    })
