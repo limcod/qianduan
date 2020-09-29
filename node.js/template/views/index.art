@@ -5,6 +5,7 @@
     <title>Document</title>
 </head>
 <boby>
-
+    {{ name }}
+    {{ age }}
 </boby>
 </html>
