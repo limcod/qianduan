@@ -47,7 +47,7 @@ app.on('request', async (req, res) => {
             // html字符串
             let list = ``;
             res.end(list);
-        }
+        }   
     }else if(methob == 'POST'){
 
     }
