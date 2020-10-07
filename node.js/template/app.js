@@ -10,7 +10,8 @@ const views = path.join(__dirname,'views','index.art');
 // 返回拼接好的字符串
 const html = template(views,{
     name :'张三',
-    age: 20
+    age: 20,
+    content : <h1>我是标题</h1>
 })
 
 console.log(html);
