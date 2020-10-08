@@ -5,12 +5,14 @@ const getRouter = require('router');
 // 获取路由对象
 const router = getRouter();
 
+// 呈递学生档案信息页面
 router.get('/test',(req,res) => {
     res.end('test')
 })
 
+// 呈递学生档案信息列表页面
 router.get('/index',(req,res) => {
-    
+    res.end('index')
 })
 
 // 数据库连接
@@ -21,7 +23,9 @@ const Student = require('./model/user.js')
 const app = http.createServer();
 // 当客户端访问服务器端的时候
 app.on('request',(req,res) => {
-    res.end('ok');
+    router(req, res, () => {
+        console.log('1');
+    })
 })
 
 app.listen(80);
