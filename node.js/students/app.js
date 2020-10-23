@@ -27,7 +27,8 @@ router.get('/add',(req,res) => {
 
 // 呈递学生档案信息列表页面
 router.get('/index',(req,res) => {
-    res.end('index')
+    let html = template('list.art',{})
+    res.end(html)
 })
 
 // 数据库连接
