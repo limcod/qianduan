@@ -6,7 +6,8 @@ const getRouter = require('router');
 const template = require('art-template');
 // 引入path模块
 const path = require('path');
-
+// 引入querystring模块
+const querystring = require('querystring');
 // 引入静态资源访问模块
 const serveStatic = require('serve-static');
 
@@ -26,9 +27,29 @@ router.get('/add',(req,res) => {
 })
 
 // 呈递学生档案信息列表页面
-router.get('/index',(req,res) => {
+router.get('/index', async (req,res) => {
+    // 查询学生信息
+    Students = await Student.find();
+    console.log(Students);
     let html = template('list.art',{})
     res.end(html)
+})
+
+// 实现学生信息添加功能路由
+router.post('/add',(rep,res) => {
+    // 接受post请求参数
+    let formDate = '';
+    req.on('data',param =>{
+        formDate += param;
+    })
+    req.on('end', async () => {
+        await Student.create(querystring.parse(formDate));
+        res.writeHead(301,{
+            Location: '/list'
+        });
+        res.end();
+        
+    })
 })
 
 // 数据库连接
